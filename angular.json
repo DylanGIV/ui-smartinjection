@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "ui-smartinjection"
+  "defaultProject": "ui-smartinjection",
+  "cli": {
+    "analytics": false
+  }
 }
