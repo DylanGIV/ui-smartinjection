@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './core/components/login/login.component';
-import { FeaturesComponent } from './features/features.component';
 import { FeaturesModule } from './features/features.module';
 import { DefaultServiceService } from './core/services/default-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { DefaultServiceService } from './core/services/default-service.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FeaturesModule
+    FeaturesModule,
+    BrowserAnimationsModule
   ],
   providers: [
     DefaultServiceService

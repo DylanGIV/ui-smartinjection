@@ -16,8 +16,13 @@ import { OverviewWellsTableComponent } from './widgets/overview-wells-table/over
 import { OverviewWellNameListComponent } from './widgets/overview-well-name-list/overview-well-name-list.component';
 import { UicProjectTableComponent } from './widgets/uic-project-table/uic-project-table.component';
 import { FeaturesComponent } from './features.component';
-import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -42,20 +47,17 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatTableModule,
+    
+
   ],
   exports: [
-    WellOperatorComponent, 
-    RegulatorComponent, 
-    WoDashboardComponent, 
-    WoNewProjectComponent, 
-    WoUnapprovedProjectComponent, 
-    WoPendingProjectComponent, 
-    WoCreateWellComponent, 
-    WoMyWellsComponent, 
-    RegDashboardComponent, 
-    RegUicPendingProjectsComponent, 
-    RegUicProjectReviewComponent, 
     AddRmWellsTableComponent, 
     OverviewWellsTableComponent, 
     OverviewWellNameListComponent, 
