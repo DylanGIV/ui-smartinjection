@@ -4,7 +4,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegSidebarComponent } from './reg-sidebar/reg-sidebar.component';
 import { WoSidebarComponent } from './wo-sidebar/wo-sidebar.component';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -15,7 +25,18 @@ import { WoSidebarComponent } from './wo-sidebar/wo-sidebar.component';
     WoSidebarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    FlexLayoutModule,
+    MatListModule,
+    RouterModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     HeaderComponent,

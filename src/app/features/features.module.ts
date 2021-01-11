@@ -23,44 +23,50 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from '../shared/shared.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
 @NgModule({
   declarations: [
-    WellOperatorComponent, 
-    RegulatorComponent, 
-    WoDashboardComponent, 
-    WoNewProjectComponent, 
-    WoUnapprovedProjectComponent, 
-    WoPendingProjectComponent, 
-    WoCreateWellComponent, 
-    WoMyWellsComponent, 
-    RegDashboardComponent, 
-    RegUicPendingProjectsComponent, 
-    RegUicProjectReviewComponent, 
-    AddRmWellsTableComponent, 
-    OverviewWellsTableComponent, 
-    OverviewWellNameListComponent, 
+    WellOperatorComponent,
+    RegulatorComponent,
+    WoDashboardComponent,
+    WoNewProjectComponent,
+    WoUnapprovedProjectComponent,
+    WoPendingProjectComponent,
+    WoCreateWellComponent,
+    WoMyWellsComponent,
+    RegDashboardComponent,
+    RegUicPendingProjectsComponent,
+    RegUicProjectReviewComponent,
+    AddRmWellsTableComponent,
+    OverviewWellsTableComponent,
+    OverviewWellNameListComponent,
     UicProjectTableComponent,
     FeaturesComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
+    SharedModule,
     MatCardModule,
     MatIconModule,
     FlexLayoutModule,
     MatButtonModule,
     MatFormFieldModule,
     MatTableModule,
-    
+    MatDividerModule,
+    MatSidenavModule
+
 
   ],
   exports: [
-    AddRmWellsTableComponent, 
-    OverviewWellsTableComponent, 
-    OverviewWellNameListComponent, 
+    AddRmWellsTableComponent,
+    OverviewWellsTableComponent,
+    OverviewWellNameListComponent,
     UicProjectTableComponent,
     FeaturesComponent
   ]
