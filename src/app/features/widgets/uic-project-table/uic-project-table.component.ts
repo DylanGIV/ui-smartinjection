@@ -4,44 +4,37 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'uic-project-table',
   template: `
-  <mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
-
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+<!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+<!-- Position Column -->
+<ng-container matColumnDef="position">
+  <th mat-header-cell *matHeaderCellDef> No. </th>
+  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+</ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
+<!-- Name Column -->
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> Name </th>
+  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
+<!-- Weight Column -->
+<ng-container matColumnDef="weight">
+  <th mat-header-cell *matHeaderCellDef> Weight </th>
+  <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+</ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<!-- Symbol Column -->
+<ng-container matColumnDef="symbol">
+  <th mat-header-cell *matHeaderCellDef> Symbol </th>
+  <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+</ng-container>
 
-  <!-- Row shown when there is no matching data. -->
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
   `,
   styles: [`
@@ -54,7 +47,6 @@ table {
   font-size: 14px;
   width: 100%;
 }
-
   `
   ]
 })
@@ -66,11 +58,6 @@ export class UicProjectTableComponent implements OnInit {
   constructor() { }
   
   ngOnInit(): void {
-  }
-  
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
 }
