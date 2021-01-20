@@ -26,6 +26,8 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -59,7 +61,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatFormFieldModule,
     MatTableModule,
     MatDividerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule
 
 
   ],
