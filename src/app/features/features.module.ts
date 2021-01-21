@@ -28,8 +28,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+<<<<<<< HEAD
 import { CdkStepperModule } from '@angular/cdk/stepper';
 
+=======
+>>>>>>> parent of 41ab7e5... Add the stepper layout to new-project
 
 
 
@@ -66,9 +69,13 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     MatSidenavModule,
     MatStepperModule,
     FormsModule,
+<<<<<<< HEAD
     ReactiveFormsModule,
     CdkStepperModule
 
+=======
+    ReactiveFormsModule
+>>>>>>> parent of 41ab7e5... Add the stepper layout to new-project
 
 
   ],
