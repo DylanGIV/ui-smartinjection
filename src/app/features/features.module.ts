@@ -29,11 +29,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -72,12 +67,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
-    CdkStepperModule,
-    MatInputModule,
-    MatListModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    MatGridListModule
+    CdkStepperModule
 
 
 
