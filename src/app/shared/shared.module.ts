@@ -15,6 +15,9 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   exports: [
     HeaderComponent,

@@ -29,6 +29,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -50,7 +51,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     OverviewWellsTableComponent,
     OverviewWellNameListComponent,
     UicProjectTableComponent,
-    FeaturesComponent
+    FeaturesComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +67,10 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     MatSidenavModule,
     MatStepperModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CdkStepperModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
   ],
   exports: [
     AddRmWellsTableComponent,
@@ -74,6 +78,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     OverviewWellNameListComponent,
     UicProjectTableComponent,
     FeaturesComponent
-  ]
+  ],
+  bootstrap: [FeaturesComponent]
 })
 export class FeaturesModule { }
