@@ -66,11 +66,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     MatSidenavModule,
     MatStepperModule,
     FormsModule,
-    ReactiveFormsModule,
-    CdkStepperModule
-
-
-
+    ReactiveFormsModule
   ],
   exports: [
     AddRmWellsTableComponent,
