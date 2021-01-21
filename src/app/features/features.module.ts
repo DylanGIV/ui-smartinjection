@@ -30,6 +30,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -70,7 +72,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     CdkStepperModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPseudoCheckboxModule,
+    MatCheckboxModule,
   ],
   exports: [
     AddRmWellsTableComponent,
