@@ -22,6 +22,7 @@ const routes: Routes = [
   },
   { path: 'wo', component: WellOperatorComponent,
     children: [
+      { path: '', component: WoDashboardComponent },
       { path: 'dashboard', component: WoDashboardComponent },
       { path: 'create-well', component: WoCreateWellComponent },
       { path: 'my-wells', component: WoMyWellsComponent },

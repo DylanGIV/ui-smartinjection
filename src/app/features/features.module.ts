@@ -28,6 +28,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -48,7 +53,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OverviewWellsTableComponent,
     OverviewWellNameListComponent,
     UicProjectTableComponent,
-    FeaturesComponent
+    FeaturesComponent,
   ],
   imports: [
     CommonModule,
@@ -64,9 +69,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatStepperModule,
     FormsModule,
-    ReactiveFormsModule
-
-
+    ReactiveFormsModule,
+    CdkStepperModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatPseudoCheckboxModule,
+    MatCheckboxModule,
   ],
   exports: [
     AddRmWellsTableComponent,
@@ -74,6 +82,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OverviewWellNameListComponent,
     UicProjectTableComponent,
     FeaturesComponent
-  ]
+  ],
+  bootstrap: [FeaturesComponent]
 })
 export class FeaturesModule { }
