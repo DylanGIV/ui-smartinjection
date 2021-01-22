@@ -6,15 +6,15 @@ import { SelectionModel } from '@angular/cdk/collections';
   selector: 'app-add-rm-wells-table',
   template: `
     <!-- Bugs: mat-form-field is broken -->
-    <!-- <mat-form-field> -->
-    <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. ium"
-      #input
-    />
-    <!-- </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. ium"
+        #input
+      />
+    </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Checkbox Column -->

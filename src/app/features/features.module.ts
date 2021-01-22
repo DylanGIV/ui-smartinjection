@@ -31,10 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
-
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -75,14 +73,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     BrowserAnimationsModule,
     MatPseudoCheckboxModule,
     MatCheckboxModule,
+    MatInputModule,
   ],
   exports: [
     AddRmWellsTableComponent,
     OverviewWellsTableComponent,
     OverviewWellNameListComponent,
     UicProjectTableComponent,
-    FeaturesComponent
+    FeaturesComponent,
   ],
-  bootstrap: [FeaturesComponent]
+  bootstrap: [FeaturesComponent],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}
