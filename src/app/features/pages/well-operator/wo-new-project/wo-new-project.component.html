@@ -7,9 +7,11 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>New project's name</ng-template>
       <div>
-        <mat-label>Enter a new project's name</mat-label>
-        <br>
-        <input matInput placeholder="Ex. NP" formControlName="projectName">
+        <mat-form-field>
+          <mat-label>Enter a new project's name</mat-label>
+          <br>
+          <input matInput placeholder="Ex. NP" formControlName="projectName">
+        </mat-form-field>
       </div>
     </form>
     <br>
@@ -46,6 +48,9 @@
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Overview</ng-template>
+      <div>
+        <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+      </div>
       <app-overview-wells-table></app-overview-wells-table>
     </form>
     <br>

@@ -25,4 +25,8 @@ export class WoNewProjectComponent implements OnInit {
     });
   }
 
+  saveDraftBtn() {}
+
+  submitBtn() {}
+
 }
