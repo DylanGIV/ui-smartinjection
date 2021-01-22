@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -53,11 +53,15 @@ table {
 
 export class UicProjectTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]as any[]);
+
+  @Input()
+  data!: any[];
   
   constructor() { }
   
   ngOnInit(): void {
+    this.dataSource.data = this.data;
   }
   
 }
@@ -70,7 +74,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 1, name: 'HelloWorld', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},

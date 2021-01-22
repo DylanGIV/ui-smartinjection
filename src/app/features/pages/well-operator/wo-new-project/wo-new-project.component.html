@@ -9,7 +9,7 @@
       <div>
         <mat-label>Enter a new project's name</mat-label>
         <br>
-        <input matInput placeholder="Ex. NP" value="">
+        <input matInput placeholder="Ex. NP" formControlName="projectName">
       </div>
     </form>
     <br>
@@ -22,7 +22,7 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Add wells</ng-template>
       <div>
-        <mat-card>Project Name: </mat-card>
+        <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
         <br>
         <mat-card class="add-remove-table">
           <mat-card-content>

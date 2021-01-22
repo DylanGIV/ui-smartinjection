@@ -17,7 +17,8 @@ export class WoNewProjectComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
+      projectName: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
