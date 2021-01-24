@@ -33,6 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -74,6 +76,7 @@ import { MatInputModule } from '@angular/material/input';
     MatPseudoCheckboxModule,
     MatCheckboxModule,
     MatInputModule,
+    MatListModule
   ],
   exports: [
     AddRmWellsTableComponent,
