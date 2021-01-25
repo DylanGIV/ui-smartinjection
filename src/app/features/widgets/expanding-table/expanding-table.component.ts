@@ -8,7 +8,7 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-overview-wells-table',
+  selector: 'expanding-table',
   template: `
     <table
       mat-table
@@ -16,10 +16,7 @@ import {
       multiTemplateDataRows
       class="mat-elevation-z8"
     >
-      <ng-container
-        matColumnDef="{{ column }}"
-        *ngFor="let column of columnsToDisplay"
-      >
+      <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
         <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
       </ng-container>
@@ -129,7 +126,7 @@ tr.example-element-row:not(.example-expanded-row):active {
     ]),
   ],
 })
-export class OverviewWellsTableComponent implements OnInit {
+export class ExpandingTableComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
   expandedElement!: PeriodicElement | null;

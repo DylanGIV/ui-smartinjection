@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-overview-well-name-list',
+  selector: 'selection-list',
   template: `
     <mat-selection-list #item>
       <mat-list-option *ngFor="let item of defaultList">
@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class OverviewWellNameListComponent implements OnInit {
+export class SelectionListComponent implements OnInit {
 
   defaultList: string[]= ['hello', 'world', 'bitch'];
 

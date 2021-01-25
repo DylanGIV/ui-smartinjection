@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverviewWellsTableComponent } from './overview-wells-table.component';
+import { SelectionTableComponent } from './selection-table.component';
 
-describe('OverviewWellsTableComponent', () => {
-  let component: OverviewWellsTableComponent;
-  let fixture: ComponentFixture<OverviewWellsTableComponent>;
+describe('AddRmWellsTableComponent', () => {
+  let component: SelectionTableComponent;
+  let fixture: ComponentFixture<SelectionTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OverviewWellsTableComponent ]
+      declarations: [ SelectionTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OverviewWellsTableComponent);
+    fixture = TestBed.createComponent(SelectionTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

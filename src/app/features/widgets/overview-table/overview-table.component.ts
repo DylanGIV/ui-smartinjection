@@ -45,7 +45,7 @@ table {
   ]
 })
 
-export class UicProjectTableComponent implements OnInit {
+export class OverviewTableComponent implements OnInit {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
 

@@ -28,13 +28,13 @@
         <br>
         <mat-card class="add-remove-table">
           <mat-card-content>
-            <app-add-rm-wells-table></app-add-rm-wells-table>
+            <selection-table></selection-table>
           </mat-card-content>
         </mat-card>
         <br>
         <mat-card class="overview-list">
           <mat-card-content>
-            <app-overview-well-name-list></app-overview-well-name-list>
+            <selection-list></selection-list>
           </mat-card-content>
         </mat-card>
       </div>
@@ -51,7 +51,7 @@
       <div>
         <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
       </div>
-      <app-overview-wells-table></app-overview-wells-table>
+      <expanding-table></expanding-table>
     </form>
     <br>
     <button mat-button matStepperPrevious>Previous</button>

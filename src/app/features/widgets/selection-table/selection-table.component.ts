@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-add-rm-wells-table',
+  selector: 'selection-table',
   template: `
     <!-- Bugs: mat-form-field is broken -->
     <mat-form-field>
@@ -87,7 +87,7 @@ import { SelectionModel } from '@angular/cdk/collections';
     `,
   ],
 })
-export class AddRmWellsTableComponent implements OnInit {
+export class SelectionTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
