@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UicProjectTableComponent } from './uic-project-table.component';
+import { ExpandingTableComponent } from './expanding-table.component';
 
-describe('UicProjectTableComponent', () => {
-  let component: UicProjectTableComponent;
-  let fixture: ComponentFixture<UicProjectTableComponent>;
+describe('OverviewWellsTableComponent', () => {
+  let component: ExpandingTableComponent;
+  let fixture: ComponentFixture<ExpandingTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UicProjectTableComponent ]
+      declarations: [ ExpandingTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UicProjectTableComponent);
+    fixture = TestBed.createComponent(ExpandingTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

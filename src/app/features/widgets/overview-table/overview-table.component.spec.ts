@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddRmWellsTableComponent } from './add-rm-wells-table.component';
+import { OverviewTableComponent } from './overview-table.component';
 
-describe('AddRmWellsTableComponent', () => {
-  let component: AddRmWellsTableComponent;
-  let fixture: ComponentFixture<AddRmWellsTableComponent>;
+describe('UicProjectTableComponent', () => {
+  let component: OverviewTableComponent;
+  let fixture: ComponentFixture<OverviewTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddRmWellsTableComponent ]
+      declarations: [ OverviewTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddRmWellsTableComponent);
+    fixture = TestBed.createComponent(OverviewTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

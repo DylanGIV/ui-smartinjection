@@ -11,10 +11,10 @@ import { WoMyWellsComponent } from './pages/well-operator/wo-my-wells/wo-my-well
 import { RegDashboardComponent } from './pages/regulator/reg-dashboard/reg-dashboard.component';
 import { RegUicPendingProjectsComponent } from './pages/regulator/reg-uic-pending-projects/reg-uic-pending-projects.component';
 import { RegUicProjectReviewComponent } from './pages/regulator/reg-uic-project-review/reg-uic-project-review.component';
-import { AddRmWellsTableComponent } from './widgets/add-rm-wells-table/add-rm-wells-table.component';
-import { OverviewWellsTableComponent } from './widgets/overview-wells-table/overview-wells-table.component';
-import { OverviewWellNameListComponent } from './widgets/overview-well-name-list/overview-well-name-list.component';
-import { UicProjectTableComponent } from './widgets/uic-project-table/uic-project-table.component';
+import { SelectionTableComponent } from './widgets/selection-table/selection-table.component';
+import { ExpandingTableComponent } from './widgets/expanding-table/expanding-table.component';
+import { SelectionListComponent } from './widgets/selection-list/selection-list.component';
+import { OverviewTableComponent } from './widgets/overview-table/overview-table.component';
 import { FeaturesComponent } from './features.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatCardModule } from '@angular/material/card';
@@ -49,10 +49,10 @@ import {MatListModule} from '@angular/material/list';
     RegDashboardComponent,
     RegUicPendingProjectsComponent,
     RegUicProjectReviewComponent,
-    AddRmWellsTableComponent,
-    OverviewWellsTableComponent,
-    OverviewWellNameListComponent,
-    UicProjectTableComponent,
+    SelectionTableComponent,
+    ExpandingTableComponent,
+    SelectionListComponent,
+    OverviewTableComponent,
     FeaturesComponent,
   ],
   imports: [
@@ -79,10 +79,10 @@ import {MatListModule} from '@angular/material/list';
     MatListModule
   ],
   exports: [
-    AddRmWellsTableComponent,
-    OverviewWellsTableComponent,
-    OverviewWellNameListComponent,
-    UicProjectTableComponent,
+    SelectionTableComponent,
+    ExpandingTableComponent,
+    SelectionListComponent,
+    OverviewTableComponent,
     FeaturesComponent,
   ],
   bootstrap: [FeaturesComponent],
