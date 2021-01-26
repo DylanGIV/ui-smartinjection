@@ -42,7 +42,7 @@
           <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
           <br>
           <mat-card>
-            <overview-table></overview-table>
+            <overview-table [data]="sampleData" [col]="columnsToDisplay"></overview-table>
           </mat-card>
         </div>
       </form>
