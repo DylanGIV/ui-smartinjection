@@ -14,19 +14,19 @@ import { MatTableDataSource } from '@angular/material/table';
 <!-- Project Name Column -->
 <ng-container matColumnDef="projectName">
   <th mat-header-cell *matHeaderCellDef> Project Name </th>
-  <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.projectName}} </td>
 </ng-container>
 
 <!-- Status Column -->
 <ng-container matColumnDef="status">
   <th mat-header-cell *matHeaderCellDef> Project Status </th>
-  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.status}} </td>
 </ng-container>
 
 <!-- UIC Project Number Column -->
 <ng-container matColumnDef="UICProjectNumber">
   <th mat-header-cell *matHeaderCellDef> UIC Project Number </th>
-  <td mat-cell *matCellDef="let element"> {{element.UICProjectNumber}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.UICProjectNumber}} </td>
 </ng-container>
 
 <!-- ************* WELL TABLE *************** -->
@@ -81,10 +81,10 @@ table {
 
 export class OverviewTableComponent implements OnInit {
   displayedColumns!: string[];
-  dataSource = new MatTableDataSource([]as any[]);
+  dataSource = new MatTableDataSource();
 
   @Input()
-  data!: any[];
+  data: any;
 
   @Input()
   col!: any[];
@@ -92,7 +92,8 @@ export class OverviewTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.data;
+    console.log(this.data);
+    this.dataSource = new MatTableDataSource(<any> this.data);
     this.displayedColumns = this.col;
   }
 

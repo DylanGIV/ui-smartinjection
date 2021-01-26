@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DefaultService } from 'src/app/core/services/default.service';
 
 @Component({
   selector: 'app-wo-dashboard',
@@ -7,16 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WoDashboardComponent implements OnInit {
 
-  sampleData = SAMPLE_DATA;
+  testDummy: any;
+
+  tableData!: any;
   passedCol = [
     'projectName',
     'status',
     'UICProjectNumber'
   ];
+  
 
-  constructor() { }
+  constructor(private defaultService:DefaultService) { }
 
   ngOnInit(): void {
+    this.initializeProjects();
+  }
+
+  initializeProjects(): void {
+    this.defaultService.getProjects().subscribe(value => {
+      console.log(value);
+      this.tableData = value;
+      console.log("table data");
+      console.log(this.tableData);
+      console.log(value[1].state.data.projectName);
+    }) 
   }
 
 }

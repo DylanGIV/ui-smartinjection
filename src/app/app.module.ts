@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { FeaturesModule } from './features/features.module';
-import { DefaultServiceService } from './core/services/default-service.service';
+import { DefaultService } from './core/services/default.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @NgModule({
@@ -22,7 +22,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ReactiveFormsModule
   ],
   providers: [
-    DefaultServiceService
+    DefaultService
   ],
   bootstrap: [AppComponent]
 })
