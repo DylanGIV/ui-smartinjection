@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'uic-project-table',
+  selector: 'overview-table',
   template: `
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -54,12 +54,12 @@ export class OverviewTableComponent implements OnInit {
 
   @Input()
   col!: any[];
-  
+
   constructor() { }
-  
+
   ngOnInit(): void {
     this.dataSource.data = this.data;
     this.displayedColumns = this.col;
   }
-  
+
 }

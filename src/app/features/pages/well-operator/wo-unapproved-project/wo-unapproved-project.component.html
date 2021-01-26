@@ -1,1 +1,33 @@
-<p>wo-unapproved-project works!</p>
+<div>
+  <button mat-button>Back to the Dashboard</button>
+  <mat-horizontal-stepper>
+    <!-- Step #1: Overview of the project-->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Overview of the Project</ng-template>
+        <div>
+          <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+        </div>
+      </form>
+      <br>
+      <button mat-button matStepperNext>Next Step</button>
+    </mat-step>
+    <!-- Step #2: Edit wells in the project-->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel> Edit wells in the project</ng-template>
+        <div>
+          <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+        </div>
+      </form>
+    </mat-step>
+    <!-- Step #3: Review changes-->
+    <mat-step>
+
+    </mat-step>
+    <!-- Step #4: Confirmation-->
+    <mat-step>
+
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
