@@ -26,5 +26,9 @@ export class WoUnapprovedProjectComponent implements OnInit {
     });
 
   }
+  
+  saveDraftBtn() {}
+  submitBtn() {}
+
 
 }
