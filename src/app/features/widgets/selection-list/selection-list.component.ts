@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectionListComponent implements OnInit {
 
-  defaultList: string[]= ['hello', 'world', 'bitch'];
+  defaultList: string[]= ['hello', 'world', ];
 
   constructor() { }
 
