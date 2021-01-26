@@ -34,6 +34,8 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import { OverviewListComponent } from './widgets/overview-list/overview-list.component';
+import { InfoListComponent } from './widgets/info-list/info-list.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import {MatListModule} from '@angular/material/list';
     SelectionListComponent,
     OverviewTableComponent,
     FeaturesComponent,
+    OverviewListComponent,
+    InfoListComponent,
   ],
   imports: [
     CommonModule,
@@ -84,6 +88,7 @@ import {MatListModule} from '@angular/material/list';
     SelectionListComponent,
     OverviewTableComponent,
     FeaturesComponent,
+    OverviewListComponent
   ],
   bootstrap: [FeaturesComponent],
 })
