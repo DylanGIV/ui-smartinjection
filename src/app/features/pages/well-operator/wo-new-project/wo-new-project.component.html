@@ -1,5 +1,5 @@
 <div>
-<button mat-button>Back to the Dashboard</button>
+<button mat-button routerLink="/wo/dashboard" routerLinkActive="active">Back to the Dashboard</button>
 <mat-horizontal-stepper>
   <!-- Step 1 -->
   <!-- Bugs: Currently <mat-form-field> is not function properly-->
@@ -24,7 +24,9 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Add wells</ng-template>
       <div>
-        <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+        <mat-card>
+          Project Name: {{ firstFormGroup.value.projectName }} 
+        </mat-card>
         <br>
         <mat-card class="add-remove-table">
           <mat-card-content>
