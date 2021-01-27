@@ -81,10 +81,9 @@ table {
 
 export class OverviewTableComponent implements OnInit {
   displayedColumns!: string[];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource([]as any[]);
 
-  @Input()
-  data: any;
+  @Input() data!: any[];
 
   @Input()
   col!: any[];
@@ -93,8 +92,9 @@ export class OverviewTableComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
-    this.dataSource = new MatTableDataSource(<any> this.data);
+    this.dataSource.data = this.data;
     this.displayedColumns = this.col;
+    console.log(this.dataSource.data);
   }
 
 }

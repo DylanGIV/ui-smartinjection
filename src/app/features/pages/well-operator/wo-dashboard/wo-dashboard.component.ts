@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DefaultService } from 'src/app/core/services/default.service';
 
 @Component({
@@ -30,7 +31,7 @@ export class WoDashboardComponent implements OnInit {
       this.tableData = value;
       console.log("table data");
       console.log(this.tableData);
-      console.log(value[1].state.data.projectName);
+      // console.log(value[1].state.data.projectName);
     }) 
   }
 
