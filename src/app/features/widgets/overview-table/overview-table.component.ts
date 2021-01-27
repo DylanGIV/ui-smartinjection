@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -79,21 +79,25 @@ table {
   ]
 })
 
-export class OverviewTableComponent implements OnInit {
+export class OverviewTableComponent implements OnInit, OnChanges {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
 
   @Input() data!: any[];
 
-  @Input()
-  col!: any[];
+  @Input() col!: any[];
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.dataSource.data = this.data;
     this.displayedColumns = this.col;
+  }
+
+  ngOnChanges(): void {
+    console.log("OnChanges");
+    console.log(this.data);
+    this.dataSource.data = this.data;
     console.log(this.dataSource.data);
   }
 
