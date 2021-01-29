@@ -11,12 +11,16 @@
         <mat-form-field>
           <mat-label>Enter a new project's name</mat-label>
           <br>
-          <input matInput placeholder="Ex. NP" formControlName="projectName">
+          <input matInput placeholder="Ex. NP"
+            name
+            formControlName="projectName"
+            ngModel name="projectName"
+            id="projectName" required>
         </mat-form-field>
       </div>
     </form>
     <br>
-    <button mat-button matStepperNext>Next Step</button>
+    <button mat-button matStepperNext >Next Step</button>
   </mat-step>
 
   <!-- Step 2-->
@@ -66,8 +70,11 @@
   <mat-step>
     <ng-template matStepLabel>Confirmation</ng-template>
     <br>
+    <p>Do you want to submit this project?</p>
+    <p style="font-size:14px; color:#f30000; font-weight:bold;">
+        You are responsible for any data entry error after this point. </p>
     <button mat-button matStepperPrevious>Back</button>
-    <button mat-button>Submit</button>
+    <button mat-button onClick="submitBtn()" [routerLink]="['/wo/dashboard']">Submit</button>
   </mat-step>
 </mat-horizontal-stepper>
 </div>

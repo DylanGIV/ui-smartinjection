@@ -32,10 +32,13 @@ export class WoNewProjectComponent implements OnInit {
 
   saveDraftBtn() {
     let formData = new FormData;
-    
+
     this.defaultService.addRemoveWell(formData).subscribe(value => {
       this.result = value;
     })
+  }
+
+  submitBtn() {
   }
 
   createNewProject(projectName: NgForm) {
