@@ -82,6 +82,8 @@ table {
 export class OverviewTableComponent implements OnInit, OnChanges {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
+  unapprovedProjects: any[] = [];
+  temp: any;
 
   @Input() data!: any[];
 
@@ -90,15 +92,24 @@ export class OverviewTableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.data;
     this.displayedColumns = this.col;
   }
 
   ngOnChanges(): void {
-    console.log("OnChanges");
-    console.log(this.data);
+
     this.dataSource.data = this.data;
-    console.log(this.dataSource.data);
+
+    // console.log("data: ", this.data.length);
+
+    // for (let i= 0; i < this.data.length; i++) {
+    //   if (this.data[i].state.data.status == "Unapproved") {
+    //     this.unapprovedProjects.push(this.data[i]);
+    //     // console.log(this.unapprovedProjects);
+    //   }
+    // }
+    // console.log("unapproved projects: ", this.unapprovedProjects);
+    // this.dataSource.data = this.unapprovedProjects;
+    // console.log("dataSource:", this.dataSource.data);
   }
 
 }

@@ -9,8 +9,6 @@ import { DefaultService } from 'src/app/core/services/default.service';
 })
 export class WoDashboardComponent implements OnInit {
 
-  testDummy: any;
-
   tableData!: any;
   passedCol = [
     'projectName',
