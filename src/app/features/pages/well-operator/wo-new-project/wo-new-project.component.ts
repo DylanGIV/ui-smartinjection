@@ -16,6 +16,7 @@ export class WoNewProjectComponent implements OnInit {
   thirdFormGroup!: FormGroup;
   name!: string;
   result: any;
+  temp: any;
 
 
   constructor(private _formBuilder: FormBuilder, private defaultService: DefaultService) {}
@@ -38,14 +39,18 @@ export class WoNewProjectComponent implements OnInit {
     })
   }
 
-  createNewProject(projectName: NgForm) {
+  createNewProject() {
 
-    let formData = new FormData;
-    formData.append('projectName', projectName.value.projectName);
+    console.log(this.firstFormGroup.controls['projectName'].value);
+
+    let formData = new FormData();
+    formData.append('projectName', this.firstFormGroup.controls['projectName'].value);
 
     this.defaultService.createProject(formData).subscribe(value => {
       this.result = value;
     });
+
+    // Above works but this returns undefined 
     console.log(this.result);
   }
 

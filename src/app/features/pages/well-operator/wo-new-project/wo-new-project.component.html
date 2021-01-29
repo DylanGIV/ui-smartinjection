@@ -1,73 +1,72 @@
 <div>
-<button mat-button routerLink="/wo/dashboard" routerLinkActive="active">Back to the Dashboard</button>
-<mat-horizontal-stepper>
-  <!-- Step 1 -->
-  <!-- Bugs: Currently <mat-form-field> is not function properly-->
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>New project's name</ng-template>
-      <div>
-        <form #projectName="ngForm" (ngSubmit)="createNewProject(projectName)"></form>
-        <mat-form-field>
-          <mat-label>Enter a new project's name</mat-label>
+  <button mat-button routerLink="/wo/dashboard" routerLinkActive="active">Back to the Dashboard</button>
+  <mat-horizontal-stepper>
+    <!-- Step 1 -->
+    <!-- Bugs: Currently <mat-form-field> is not function properly-->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="createNewProject()">
+        <ng-template matStepLabel>New project's name</ng-template>
+        <div>
+            <mat-form-field>
+              <mat-label>Enter a new project's name</mat-label>
+              <br>
+              <input matInput placeholder="Ex. NP" formControlName="projectName">
+            </mat-form-field>
+            <br>
+            <button mat-button matStepperNext type="submit">Next Step</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2-->
+    <!-- Need to add Flex-layout -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Add wells</ng-template>
+        <div>
+          <mat-card>
+            Project Name: {{ firstFormGroup.value.projectName }}
+          </mat-card>
           <br>
-          <input matInput placeholder="Ex. NP" formControlName="projectName">
-        </mat-form-field>
-      </div>
-    </form>
-    <br>
-    <button mat-button matStepperNext>Next Step</button>
-  </mat-step>
+          <mat-card class="add-remove-table">
+            <mat-card-content>
+              <selection-table></selection-table>
+            </mat-card-content>
+          </mat-card>
+          <br>
+          <mat-card class="overview-list">
+            <mat-card-content>
+              <selection-list></selection-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </form>
+      <br>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button matStepperNext>Next Step</button>
+    </mat-step>
 
-  <!-- Step 2-->
-  <!-- Need to add Flex-layout -->
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Add wells</ng-template>
-      <div>
-        <mat-card>
-          Project Name: {{ firstFormGroup.value.projectName }}
-        </mat-card>
-        <br>
-        <mat-card class="add-remove-table">
-          <mat-card-content>
-            <selection-table></selection-table>
-          </mat-card-content>
-        </mat-card>
-        <br>
-        <mat-card class="overview-list">
-          <mat-card-content>
-            <selection-list></selection-list>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </form>
-    <br>
-    <button mat-button matStepperPrevious>Previous</button>
-    <button mat-button matStepperNext>Next Step</button>
-  </mat-step>
+    <!-- Step 3 -->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Overview</ng-template>
+        <div>
+          <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
+        </div>
+        <expanding-table></expanding-table>
+      </form>
+      <br>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button>Save Draft</button>
+      <button mat-button matStepperNext>Next Step</button>
+    </mat-step>
 
-  <!-- Step 3 -->
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Overview</ng-template>
-      <div>
-        <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
-      </div>
-      <expanding-table></expanding-table>
-    </form>
-    <br>
-    <button mat-button matStepperPrevious>Previous</button>
-    <button mat-button>Save Draft</button>
-    <button mat-button matStepperNext>Next Step</button>
-  </mat-step>
-
-  <!-- Step 4 -->
-  <mat-step>
-    <ng-template matStepLabel>Confirmation</ng-template>
-    <br>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button>Submit</button>
-  </mat-step>
-</mat-horizontal-stepper>
+    <!-- Step 4 -->
+    <mat-step>
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <br>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button>Submit</button>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>
