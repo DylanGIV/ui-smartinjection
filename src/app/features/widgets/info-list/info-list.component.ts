@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoListComponent implements OnInit {
 
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+  typesOfShoes: string[] = ['Well 1', 'Well 2', 'Well 3', 'Well 4', 'Well 5'];
 
   constructor() { }
 

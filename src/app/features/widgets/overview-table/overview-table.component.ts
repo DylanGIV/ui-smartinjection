@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -14,19 +14,19 @@ import { MatTableDataSource } from '@angular/material/table';
 <!-- Project Name Column -->
 <ng-container matColumnDef="projectName">
   <th mat-header-cell *matHeaderCellDef> Project Name </th>
-  <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.projectName}} </td>
 </ng-container>
 
 <!-- Status Column -->
 <ng-container matColumnDef="status">
   <th mat-header-cell *matHeaderCellDef> Project Status </th>
-  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.status}} </td>
 </ng-container>
 
 <!-- UIC Project Number Column -->
 <ng-container matColumnDef="UICProjectNumber">
   <th mat-header-cell *matHeaderCellDef> UIC Project Number </th>
-  <td mat-cell *matCellDef="let element"> {{element.UICProjectNumber}} </td>
+  <td mat-cell *matCellDef="let element"> {{element.state.data.UICProjectNumber}} </td>
 </ng-container>
 
 <!-- ************* WELL TABLE *************** -->
@@ -79,21 +79,37 @@ table {
   ]
 })
 
-export class OverviewTableComponent implements OnInit {
+export class OverviewTableComponent implements OnInit, OnChanges {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
+  unapprovedProjects: any[] = [];
+  temp: any;
 
-  @Input()
-  data!: any[];
+  @Input() data!: any[];
 
-  @Input()
-  col!: any[];
+  @Input() col!: any[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.data;
     this.displayedColumns = this.col;
+  }
+
+  ngOnChanges(): void {
+
+    this.dataSource.data = this.data;
+
+    // console.log("data: ", this.data.length);
+
+    // for (let i= 0; i < this.data.length; i++) {
+    //   if (this.data[i].state.data.status == "Unapproved") {
+    //     this.unapprovedProjects.push(this.data[i]);
+    //     // console.log(this.unapprovedProjects);
+    //   }
+    // }
+    // console.log("unapproved projects: ", this.unapprovedProjects);
+    // this.dataSource.data = this.unapprovedProjects;
+    // console.log("dataSource:", this.dataSource.data);
   }
 
 }
