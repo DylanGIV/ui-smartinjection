@@ -7,6 +7,7 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>New project's name</ng-template>
       <div>
+        <form #projectName="ngForm" (ngSubmit)="createNewProject(projectName)"></form>
         <mat-form-field>
           <mat-label>Enter a new project's name</mat-label>
           <br>
@@ -25,7 +26,7 @@
       <ng-template matStepLabel>Add wells</ng-template>
       <div>
         <mat-card>
-          Project Name: {{ firstFormGroup.value.projectName }} 
+          Project Name: {{ firstFormGroup.value.projectName }}
         </mat-card>
         <br>
         <mat-card class="add-remove-table">
