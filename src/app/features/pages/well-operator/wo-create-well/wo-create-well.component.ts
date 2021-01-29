@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-wo-create-well',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WoCreateWellComponent implements OnInit {
 
+  wellForm!: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm(): void {
+    
   }
 
 }

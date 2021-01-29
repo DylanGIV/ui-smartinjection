@@ -1,67 +1,69 @@
 <h1>Create Well</h1>
+<mat-card>
 
-<form>
-    <mat-form-field>
-        <mat-label>Full Well Name</mat-label>
-        <input matInput>
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field>
-        <mat-label>Lease</mat-label>
-        <input matInput>
-    </mat-form-field>
-
-    <br>
-    
-    <mat-form-field>
-        <mat-label>Well Type</mat-label>
-        <select matNativeControl>
-            <option value="oil">Oil</option>
-            <option value="gas">Gas</option>
-        </select>
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field>
-        <mat-label>Location Type</mat-label>
-        <select matNativeControl>
-            <option value="NAD27">NAD27</option>
-        </select>
-    </mat-form-field>
-
-    <br>
-
-    <div>
-        <fieldset style="width: 10%">
-            <label>Location</label>
-
-            <br>
-            
-            <mat-form-field>
-                <mat-label>X</mat-label>
-                <input matInput>
-            </mat-form-field>
-            
-            <br>
-            
-            <mat-form-field>
-                <mat-label>Y</mat-label>
-                <input matInput>
-            </mat-form-field>
-            
-            <br>
-            
-            <mat-form-field>
-                <mat-label>Z</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </fieldset>
-        </div>
-
+    <form>
+        <mat-form-field>
+            <mat-label>Full Well Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+        
         <br>
-
+        
+        <mat-form-field>
+            <mat-label>Lease</mat-label>
+            <input matInput>
+        </mat-form-field>
+        
+        <br>
+        
+        <mat-form-field>
+            <mat-label>Well Type</mat-label>
+            <select matNativeControl>
+                <option value="oil">Oil</option>
+                <option value="gas">Gas</option>
+            </select>
+        </mat-form-field>
+        
+        <br>
+        
+        <mat-form-field>
+            <mat-label>Location Type</mat-label>
+            <select matNativeControl>
+                <option value="NAD27">NAD27</option>
+            </select>
+        </mat-form-field>
+        
+        <br>
+        
+        <div>
+            <fieldset style="width: 10%">
+                <label>Location</label>
+                
+                <br>
+                
+                <mat-form-field>
+                    <mat-label>X</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                
+                <br>
+                
+                <mat-form-field>
+                    <mat-label>Y</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                
+                <br>
+                
+                <mat-form-field>
+                    <mat-label>Z</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </fieldset>
+        </div>
+        
+        <br>
+        
         <button mat-stroked-button type="submit">Submit Well</button>
     </form>
+</mat-card>
