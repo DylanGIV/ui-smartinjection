@@ -1,69 +1,75 @@
 <h1>Create Well</h1>
 <mat-card>
 
-    <form>
-        <mat-form-field>
-            <mat-label>Full Well Name</mat-label>
-            <input matInput>
-        </mat-form-field>
-        
-        <br>
-        
-        <mat-form-field>
-            <mat-label>Lease</mat-label>
-            <input matInput>
-        </mat-form-field>
-        
-        <br>
-        
-        <mat-form-field>
-            <mat-label>Well Type</mat-label>
-            <select matNativeControl>
+  <form [formGroup]="wellForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="wells" *ngFor="let well of wells.controls; let i=index;">
+        <div [formGroupName]="i">
+            <mat-form-field>
+              <mat-label>Full Well Name</mat-label>
+              <input matInput formControlName="wellName">
+            </mat-form-field>
+            
+            <br>            
+
+            <mat-form-field>
+              <mat-label>Lease</mat-label>
+              <input matInput formControlName="lease">
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field>
+              <mat-label>Well Type</mat-label>
+              <select matNativeControl formControlName="wellType">
                 <option value="oil">Oil</option>
                 <option value="gas">Gas</option>
-            </select>
-        </mat-form-field>
-        
-        <br>
-        
-        <mat-form-field>
-            <mat-label>Location Type</mat-label>
-            <select matNativeControl>
+              </select>
+            </mat-form-field>
+
+            <br>
+            
+            <mat-form-field>
+              <mat-label>Location Type</mat-label>
+              <select matNativeControl formControlName="locationType">
                 <option value="NAD27">NAD27</option>
-            </select>
-        </mat-form-field>
+              </select>
+            </mat-form-field>
+            
+            <br>
         
-        <br>
-        
-        <div>
-            <fieldset style="width: 10%">
+            <div formGroupName="location">
+              <fieldset style="width: 10%">
                 <label>Location</label>
-                
+        
                 <br>
-                
+        
                 <mat-form-field>
-                    <mat-label>X</mat-label>
-                    <input matInput>
+                  <mat-label>X</mat-label>
+                  <input matInput formControlName="x">
                 </mat-form-field>
-                
+        
                 <br>
-                
+        
                 <mat-form-field>
-                    <mat-label>Y</mat-label>
-                    <input matInput>
+                  <mat-label>Y</mat-label>
+                  <input matInput formControlName="y">
                 </mat-form-field>
-                
+        
                 <br>
-                
+        
                 <mat-form-field>
-                    <mat-label>Z</mat-label>
-                    <input matInput>
+                  <mat-label>Z</mat-label>
+                  <input matInput formControlName="z">
                 </mat-form-field>
-            </fieldset>
+              </fieldset>
+            </div>
+
         </div>
-        
-        <br>
-        
-        <button mat-stroked-button type="submit">Submit Well</button>
-    </form>
+    </div>
+
+    <br>
+
+    <button mat-stroked-button type="submit">Submit Well</button>
+  </form>
+
 </mat-card>
