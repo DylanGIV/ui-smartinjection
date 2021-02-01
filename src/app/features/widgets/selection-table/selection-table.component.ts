@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -6,7 +6,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   selector: 'selection-table',
   template: `
     <!-- Bugs: mat-form-field is broken -->
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Filter</mat-label>
       <input
         matInput
@@ -14,7 +14,7 @@ import { SelectionModel } from '@angular/cdk/collections';
         placeholder="Ex. ium"
         #input
       />
-    </mat-form-field>
+    </mat-form-field> -->
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Checkbox Column -->
@@ -39,28 +39,28 @@ import { SelectionModel } from '@angular/cdk/collections';
         </td>
       </ng-container>
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      <!-- Well Name Column -->
+      <ng-container matColumnDef="wellName">
+        <th mat-header-cell *matHeaderCellDef>Well Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.wellName }}</td>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Well name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
+      <!-- Lease Column -->
+      <ng-container matColumnDef="lease">
         <th mat-header-cell *matHeaderCellDef>Lease</th>
-        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.lease }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
+      <!-- Location Type Column -->
+      <ng-container matColumnDef="locationType">
+        <th mat-header-cell *matHeaderCellDef>Location Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.locationType }}</td>
+      </ng-container>
+
+      <!-- Location Column -->
+      <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef>Location</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -69,7 +69,7 @@ import { SelectionModel } from '@angular/cdk/collections';
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">
-          No data matching the filter "{{ input.value }}"
+          <!-- No data matching the filter "{{ input.value }}" -->
         </td>
       </tr>
     </table>
@@ -87,14 +87,23 @@ import { SelectionModel } from '@angular/cdk/collections';
     `,
   ],
 })
-export class SelectionTableComponent implements OnInit {
+export class SelectionTableComponent implements OnInit, OnChanges {
+  displayedColumns!: string[];
+  dataSource = new MatTableDataSource([]as any[]);
+  selection = new SelectionModel<PeriodicElement>(true, []);
+
+  @Input() data!: any[];
+
+  @Input() col!: any[];
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.displayedColumns = this.col;
+  }
 
-  displayedColumns: string[] = ['select', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  ngOnChanges(): void {}
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
