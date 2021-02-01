@@ -39,14 +39,7 @@ export class WoNewProjectComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
-  submitBtn() {
-  }
-
-  createNewProject(projectName: NgForm) {
-=======
   createNewProject() {
->>>>>>> 4adf4c02f9ae1103484b6deae2628c234c8c7622
 
     console.log(this.firstFormGroup.controls['projectName'].value);
 

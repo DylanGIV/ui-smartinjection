@@ -1,7 +1,7 @@
 <h1>Create Well</h1>
 <mat-card>
 
-  <form [formGroup]="wellForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="wellForm" (ngSubmit)="submitWell()">
     <div formArrayName="wells" *ngFor="let well of wells.controls; let i=index;">
         <div [formGroupName]="i">
             <mat-form-field>
@@ -62,7 +62,14 @@
                   <input matInput formControlName="z">
                 </mat-form-field>
               </fieldset>
+
+              <br>
+
             </div>
+              <mat-form-field>
+                <ngx-mat-file-input placeholder="Attachment" formControlName="attachment"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
 
         </div>
     </div>
@@ -72,4 +79,13 @@
     <button mat-stroked-button type="submit">Submit Well</button>
   </form>
 
+</mat-card>
+
+<br>
+
+<mat-card>
+  Result: 
+  <p>
+    {{ result }}
+  </p>
 </mat-card>

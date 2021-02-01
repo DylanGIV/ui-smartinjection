@@ -25,11 +25,11 @@ export class WoDashboardComponent implements OnInit {
 
   initializeProjects(): void {
     this.defaultService.getProjects().subscribe(value => {
-      console.log(value);
-      this.tableData = value;
+      // sets the data from the backend to the table data in the front end
+      this.tableData = value; 
+      
       console.log("table data");
       console.log(this.tableData);
-      // console.log(value[1].state.data.projectName);
     }) 
   }
 

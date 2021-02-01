@@ -37,6 +37,7 @@ import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { OverviewListComponent } from './widgets/overview-list/overview-list.component';
 import { InfoListComponent } from './widgets/info-list/info-list.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { InfoListComponent } from './widgets/info-list/info-list.component';
     MatCheckboxModule,
     MatInputModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialFileInputModule
   ],
   exports: [
     SelectionTableComponent,
