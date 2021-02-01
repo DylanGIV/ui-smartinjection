@@ -34,31 +34,31 @@ import { MatTableDataSource } from '@angular/material/table';
 <!-- WELL NAME -->
 <ng-container matColumnDef="wellName">
   <th mat-header-cell *matHeaderCellDef> Well Name </th>
-  <td mat-cell *matCellDef="let element"> {{ element.wellName }} </td>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.wellName }} </td>
 </ng-container>
 
 <!-- LEASE -->
 <ng-container matColumnDef="lease">
   <th mat-header-cell *matHeaderCellDef> Lease </th>
-  <td mat-cell *matCellDef="let element"> {{ element.lease }} </td>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.lease }} </td>
 </ng-container>
 
 <!-- WELL TYPE -->
 <ng-container matColumnDef="wellType">
   <th mat-header-cell *matHeaderCellDef> Well Type </th>
-  <td mat-cell *matCellDef="let element"> {{ element. wellType }} </td>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.wellType }} </td>
 </ng-container>
 
 <!-- LOCATION TYPE -->
 <ng-container matColumnDef="locationType">
   <th mat-header-cell *matHeaderCellDef> Location Type </th>
-  <td mat-cell *matCellDef="let element"> {{ element.locationType }} </td>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.locationType }} </td>
 </ng-container>
 
 <!-- LOCATION -->
 <ng-container matColumnDef="location">
   <th mat-header-cell *matHeaderCellDef> Location </th>
-  <td mat-cell *matCellDef="let element"> {{ element.location }} </td>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.location }} </td>
 </ng-container>
 
 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
