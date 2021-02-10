@@ -24,8 +24,8 @@ import { SelectionModel } from '@angular/cdk/collections';
             (change)="$event ? masterToggle() : null"
             [checked]="selection.hasValue() && isAllSelected()"
             [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
-          >
+            >
+            <!-- [aria-label]="checkboxLabel()" -->
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row">
@@ -33,8 +33,8 @@ import { SelectionModel } from '@angular/cdk/collections';
             (click)="$event.stopPropagation()"
             (change)="$event ? selection.toggle(row) : null"
             [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
-          >
+            >
+            <!-- [aria-label]="checkboxLabel(row)" -->
           </mat-checkbox>
         </td>
       </ng-container>
@@ -42,25 +42,25 @@ import { SelectionModel } from '@angular/cdk/collections';
       <!-- Well Name Column -->
       <ng-container matColumnDef="wellName">
         <th mat-header-cell *matHeaderCellDef>Well Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.wellName }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.state.data.wellName }}</td>
       </ng-container>
 
       <!-- Lease Column -->
       <ng-container matColumnDef="lease">
         <th mat-header-cell *matHeaderCellDef>Lease</th>
-        <td mat-cell *matCellDef="let element">{{ element.lease }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.state.data.lease }}</td>
       </ng-container>
 
       <!-- Location Type Column -->
       <ng-container matColumnDef="locationType">
         <th mat-header-cell *matHeaderCellDef>Location Type</th>
-        <td mat-cell *matCellDef="let element">{{ element.locationType }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.state.data.locationType }}</td>
       </ng-container>
 
       <!-- Location Column -->
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef>Location</th>
-        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.state.data.location }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -102,7 +102,9 @@ export class SelectionTableComponent implements OnInit, OnChanges {
     this.displayedColumns = this.col;
   }
 
-  ngOnChanges(): void {}
+  ngOnChanges(): void {
+    this.dataSource.data = this.data;
+  }
 
 
   applyFilter(event: Event) {
@@ -125,14 +127,14 @@ export class SelectionTableComponent implements OnInit, OnChanges {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      row.position + 1
-    }`;
-  }
+  // checkboxLabel(row?: PeriodicElement): string {
+  //   if (!row) {
+  //     return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+  //   }
+  //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+  //     row.position + 1
+  //   }`;
+  // }
 }
 
 export interface PeriodicElement {

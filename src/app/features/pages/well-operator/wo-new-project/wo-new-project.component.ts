@@ -17,14 +17,19 @@ export class WoNewProjectComponent implements OnInit {
   result: any;
 
   tableData!: any;
-  passedCol = [
+  projectWellData!: any;
+  selectPassedCol = [
     "select",
     "wellName",
     "lease",
     "locationType",
     "location"
   ];
-
+  passedCol = [
+    "wellName",
+    "lease"
+  ];
+  
   constructor(private _formBuilder: FormBuilder, private defaultService: DefaultService) {}
 
   ngOnInit() {

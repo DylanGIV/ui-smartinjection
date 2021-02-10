@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -6,6 +6,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'expanding-table',
@@ -16,9 +17,26 @@ import {
       multiTemplateDataRows
       class="mat-elevation-z8"
     >
-      <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
+      <!-- <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
         <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="wellName">
+        <th mat-header-cell *matHeaderCellDef>Well Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.state.data.wellName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lease">
+        <th mat-header-cell *matHeaderCellDef> Lease </th>
+        <td mat-cell *matCellDef="let element"> {{ element.state.data.lease }}</td>
+      </ng-container>
+      <ng-container matColumnDef="locationType">
+        <th mat-header-cell *matHeaderCellDef> Location Type </th>
+        <td mat-cell *matCellDef="let element"> {{ element.state.data.locationType }}</td>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let element"> {{ element.state.data.location }}</td>
       </ng-container>
 
       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
@@ -35,17 +53,31 @@ import {
             "
           >
             <div class="example-element-diagram">
-              <div class="example-element-position">{{ element.position }}</div>
-              <div class="example-element-symbol">{{ element.symbol }}</div>
-              <div class="example-element-name">{{ element.name }}</div>
-              <div class="example-element-weight">{{ element.weight }}</div>
+              <!-- <div class="example-element-position">{{ element.state.data.wellName }}</div> -->
+              <!-- <div class="example-element-symbol">{{ element.symbol }}</div> -->
+              <div class="example-element-name">
+                <strong>Well Name:</strong>
+                  {{ element.state.data.wellName }}
+              </div>
+              <div class="example-element-weight">
+                <strong>Lease:</strong>
+                 {{ element.state.data.lease }}
+              </div>
+              <div class="example-element-weight">
+                <strong>Location Type:</strong>
+                {{ element.state.data.locationType }}
+              </div>
+              <div class="example-element-weight">
+                <strong>Location:</strong>
+                 {{ element.state.data.location }}
+              </div>
             </div>
-            <div class="example-element-description">
+            <!-- <div class="example-element-description">
               {{ element.description }}
               <span class="example-element-description-attribution">
                 -- Wikipedia
               </span>
-            </div>
+            </div> -->
           </div>
         </td>
       </ng-container>
@@ -99,6 +131,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   font-weight: lighter;
   margin: 8px 0;
   height: 104px;
+  width: 100%;
 }
 
 .example-element-symbol {
@@ -126,14 +159,31 @@ tr.example-element-row:not(.example-expanded-row):active {
     ]),
   ],
 })
-export class ExpandingTableComponent implements OnInit {
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* --------------------- C L A S S INFO ------------------------- */
+/* ************************************************************** */
+/* ************************************************************** */
+
+export class ExpandingTableComponent implements OnInit, OnChanges {
+  dataSource = new MatTableDataSource([]as any[]);
+  columnsToDisplay!: string[];
   expandedElement!: PeriodicElement | null;
+
+  @Input() data!: any[];
+
+  @Input() col!: any[];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.columnsToDisplay = this.col;
+  }
+  
+  ngOnChanges(): void {
+    this.dataSource.data = this.data;
+  }
 }
 
 export interface PeriodicElement {

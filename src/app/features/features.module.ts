@@ -84,7 +84,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatInputModule,
     MatListModule,
     HttpClientModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    FlexLayoutModule
   ],
   exports: [
     SelectionTableComponent,
