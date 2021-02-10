@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'overview-table',
   template: `
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
 <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
@@ -13,19 +14,19 @@ import { MatTableDataSource } from '@angular/material/table';
 <!-- ******** **** UIC PROJECT TABLE ***** ********** -->
 <!-- Project Name Column -->
 <ng-container matColumnDef="projectName">
-  <th mat-header-cell *matHeaderCellDef> Project Name </th>
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
   <td mat-cell *matCellDef="let element"> {{element.state.data.projectName}} </td>
 </ng-container>
 
 <!-- Status Column -->
 <ng-container matColumnDef="status">
-  <th mat-header-cell *matHeaderCellDef> Project Status </th>
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Status </th>
   <td mat-cell *matCellDef="let element"> {{element.state.data.status}} </td>
 </ng-container>
 
 <!-- UIC Project Number Column -->
 <ng-container matColumnDef="UICProjectNumber">
-  <th mat-header-cell *matHeaderCellDef> UIC Project Number </th>
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> UIC Project Number </th>
   <td mat-cell *matCellDef="let element"> {{element.state.data.UICProjectNumber}} </td>
 </ng-container>
 
@@ -79,7 +80,7 @@ table {
   ]
 })
 
-export class OverviewTableComponent implements OnInit, OnChanges {
+export class OverviewTableComponent implements OnInit, OnChanges, AfterViewInit {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
   unapprovedProjects: any[] = [];
@@ -88,6 +89,8 @@ export class OverviewTableComponent implements OnInit, OnChanges {
   @Input() data!: any[];
 
   @Input() col!: any[];
+
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor() { }
 
@@ -98,6 +101,8 @@ export class OverviewTableComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
 
     this.dataSource.data = this.data;
+
+    this.dataSource.sort = this.sort;
 
     // console.log("data: ", this.data.length);
 
@@ -110,6 +115,10 @@ export class OverviewTableComponent implements OnInit, OnChanges {
     // console.log("unapproved projects: ", this.unapprovedProjects);
     // this.dataSource.data = this.unapprovedProjects;
     // console.log("dataSource:", this.dataSource.data);
+  }
+
+  ngAfterViewInit(): void{
+    this.dataSource.sort = this.sort;
   }
 
 }

@@ -14,10 +14,16 @@ export class WoNewProjectComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
-  name!: string;
   result: any;
-  temp: any;
 
+  tableData!: any;
+  passedCol = [
+    "select",
+    "wellName",
+    "lease",
+    "locationType",
+    "location"
+  ];
 
   constructor(private _formBuilder: FormBuilder, private defaultService: DefaultService) {}
 
@@ -29,9 +35,11 @@ export class WoNewProjectComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+
+    this.getWells();
   }
 
-  saveDraftBtn() {
+  saveDraftBtn(): void {
     let formData = new FormData;
 
     this.defaultService.addRemoveWell(formData).subscribe(value => {
@@ -39,7 +47,7 @@ export class WoNewProjectComponent implements OnInit {
     })
   }
 
-  createNewProject() {
+  createNewProject(): void {
 
     console.log(this.firstFormGroup.controls['projectName'].value);
 
@@ -52,6 +60,12 @@ export class WoNewProjectComponent implements OnInit {
 
     // Above works but this returns undefined 
     console.log(this.result);
+  }
+
+  getWells(): void {
+    this.defaultService.getWells().subscribe(value =>{
+      this.tableData = value;
+    });
   }
 
 }

@@ -27,12 +27,18 @@
           <mat-card>
             Project Name: {{ firstFormGroup.value.projectName }}
           </mat-card>
+
+          <!-- SELECTION TABLE/ADD WELL TABLE -->
           <br>
           <mat-card class="add-remove-table">
             <mat-card-content>
-              <selection-table></selection-table>
+              <selection-table
+              [col]="passedCol"
+              ></selection-table>
             </mat-card-content>
           </mat-card>
+
+          <!-- WELLS IN PROJECT/REMOVE WELL LIST -->
           <br>
           <mat-card class="overview-list">
             <mat-card-content>
