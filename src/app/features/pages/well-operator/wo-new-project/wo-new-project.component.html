@@ -33,16 +33,9 @@
           <mat-card class="add-remove-table">
             <mat-card-content>
               <selection-table
-              [col]="passedCol"
+              [col]="selectPassedCol"
+              [data]="tableData"
               ></selection-table>
-            </mat-card-content>
-          </mat-card>
-
-          <!-- WELLS IN PROJECT/REMOVE WELL LIST -->
-          <br>
-          <mat-card class="overview-list">
-            <mat-card-content>
-              <selection-list></selection-list>
             </mat-card-content>
           </mat-card>
         </div>
@@ -59,7 +52,9 @@
         <div>
           <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
         </div>
-        <expanding-table></expanding-table>
+        <expanding-table
+        [data]="tableData"
+        [col]="passedCol"></expanding-table>
       </form>
       <br>
       <button mat-button matStepperPrevious>Previous</button>

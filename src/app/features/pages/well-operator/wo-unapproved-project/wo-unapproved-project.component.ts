@@ -14,7 +14,7 @@ export class WoUnapprovedProjectComponent implements OnInit {
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
 
-  sampleData = SAMPLE_DATA;
+  sampleData!: any;
   columnsToDisplay = [
     'wellName',
     'lease',
@@ -40,19 +40,19 @@ export class WoUnapprovedProjectComponent implements OnInit {
   submitBtn() {}
 }
 
-const SAMPLE_DATA: any[] = [
-  { 
-    wellName: "Well Name", 
-    lease: "Lease Name", 
-    wellType: "Well Type", 
-    locationType: "NAD27",
-    location: "X Y Z"
-  }, 
-  { 
-    wellName: "Well Name 2", 
-    lease: "Lease Name 2", 
-    wellType: "Well Type 2", 
-    locationType: "NAD27",
-    location: "X Y Z"
-  }, 
-];
+// const SAMPLE_DATA: any[] = [
+//   { 
+//     wellName: "Well Name", 
+//     lease: "Lease Name", 
+//     wellType: "Well Type", 
+//     locationType: "NAD27",
+//     location: "X Y Z"
+//   }, 
+//   { 
+//     wellName: "Well Name 2", 
+//     lease: "Lease Name 2", 
+//     wellType: "Well Type 2", 
+//     locationType: "NAD27",
+//     location: "X Y Z"
+//   }, 
+// ];
