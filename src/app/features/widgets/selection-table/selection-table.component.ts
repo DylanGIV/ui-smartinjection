@@ -1,10 +1,12 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'selection-table',
   template: `
+  <div>
     <!-- Bugs: mat-form-field is broken -->
     <!-- <mat-form-field>
       <mat-label>Filter</mat-label>
@@ -24,7 +26,7 @@ import { SelectionModel } from '@angular/cdk/collections';
             (change)="$event ? masterToggle() : null"
             [checked]="selection.hasValue() && isAllSelected()"
             [indeterminate]="selection.hasValue() && !isAllSelected()"
-            >
+          >
             <!-- [aria-label]="checkboxLabel()" -->
           </mat-checkbox>
         </th>
@@ -64,7 +66,7 @@ import { SelectionModel } from '@angular/cdk/collections';
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)" (click)="checkSelected()"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
@@ -73,6 +75,21 @@ import { SelectionModel } from '@angular/cdk/collections';
         </td>
       </tr>
     </table>
+<!-- 
+    <br>
+
+    <mat-card>
+    {{selection.selected | json }}
+
+    <br><br>
+
+    {{ printSelectedName }}
+    
+  </mat-card>
+    <br> -->
+    <!-- <br>
+    <button mat-flat-button color="accent" (click)="checkSelected()">Update Well List</button> -->
+  </div>
   `,
   styles: [
     `
@@ -90,11 +107,16 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class SelectionTableComponent implements OnInit, OnChanges {
   displayedColumns!: string[];
   dataSource = new MatTableDataSource([]as any[]);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  selection = new SelectionModel(true, []as any[]);
+  selected!: any;
+  printSelectedName!: any;
+  wellIDs: any[] = [];
 
   @Input() data!: any[];
 
   @Input() col!: any[];
+
+  @Output() testOutput = new EventEmitter();
 
   constructor() {}
 
@@ -103,7 +125,34 @@ export class SelectionTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    console.log("in onChanges");
     this.dataSource.data = this.data;
+
+  }
+  
+  checkSelected(): void {
+    console.log("this.selection.selected: ", this.selection.selected);
+    // console.log("this.selection.selected[0]: ", this.selection.selected[0]);
+
+    // this.selected = this.selection.selected[1];
+    // console.log("externalID at 1: ", this.selected.state.data.linearId.externalId);
+
+    // this.printSelectedName = this.selected.state.data.wellName;
+
+    console.log(this.selection.selected[0].state.data.wellName);
+
+    let selectLen = this.selection.selected.length;
+
+    for (let i=0; i < selectLen; i++) {
+      // console.log(this.selection.selected[i].state.data.wellName);
+      this.wellIDs.push(this.selection.selected[i]);
+    }
+    console.log(this.wellIDs);
+
+    this.testOutput.emit(this.wellIDs);
+
+    this.wellIDs = [];
+    
   }
 
 
@@ -136,23 +185,3 @@ export class SelectionTableComponent implements OnInit, OnChanges {
   //   }`;
   // }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];

@@ -8,7 +8,7 @@ import { DefaultService } from 'src/app/core/services/default.service';
   templateUrl: './wo-new-project.component.html',
   styleUrls: ['./wo-new-project.component.scss']
 })
-export class WoNewProjectComponent implements OnInit {
+export class WoNewProjectComponent implements OnInit, OnChanges {
 
   isLinear = false;
   firstFormGroup!: FormGroup;
@@ -18,6 +18,7 @@ export class WoNewProjectComponent implements OnInit {
 
   tableData!: any;
   projectWellData!: any;
+  wellTable!: any;
   selectPassedCol = [
     "select",
     "wellName",
@@ -25,9 +26,12 @@ export class WoNewProjectComponent implements OnInit {
     "locationType",
     "location"
   ];
-  passedCol = [
+  stepThreeCol = [
     "wellName",
     "lease"
+  ];
+  stepTwoCol = [
+    "wellName"
   ];
   
   constructor(private _formBuilder: FormBuilder, private defaultService: DefaultService) {}
@@ -44,14 +48,58 @@ export class WoNewProjectComponent implements OnInit {
     this.getWells();
   }
 
+  ngOnChanges(value: any) {
+    this.wellTable = value;
+  }
+
+  updateWellList(wellList: any[]) {
+    console.log("in parent component: ", wellList);
+
+    this.ngOnChanges(wellList);
+
+    console.log(this.wellTable);
+  }
+
+  
+
+  // **** UNBINDED ****
   saveDraftBtn(): void {
     let formData = new FormData;
+    let updateArray: string[] = [];
+    let externalIDArray: string[] = [];    
+    
+    for(let i=0; i < this.wellTable.length; i++) { 
+      externalIDArray.push(this.wellTable[i].state.data.linearId.externalId);
+      updateArray.push(this.firstFormGroup.controls['projectName'].value); 
+    }
 
+    console.log("externalID: ", externalIDArray);
+    console.log("updateArray: ", updateArray);
+
+    // for (let i=0; i < this.wellTable.length; i++){
+    //   formData.append('projectName', this.firstFormGroup.controls['projectName'].value);
+    //   formData.append('externalIds', externalIDArray[i]);
+    //   formData.append('updates', updateArray[i]);
+      
+    //   this.defaultService.addRemoveWell(formData).subscribe(value => {
+    //     this.result = value;
+    //   })
+    // }
+    
+    formData.append('projectName', this.firstFormGroup.controls['projectName'].value);
+    formData.append('externalIds', externalIDArray[0]);
+    formData.append('updates', updateArray[0]);
+
+    console.log('externalIds', externalIDArray[0]);
+    
     this.defaultService.addRemoveWell(formData).subscribe(value => {
       this.result = value;
     })
   }
 
+  
+
+  // *********** BINDED ***************
   createNewProject(): void {
 
     console.log(this.firstFormGroup.controls['projectName'].value);

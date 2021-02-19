@@ -29,14 +29,18 @@
           </mat-card>
 
           <!-- SELECTION TABLE/ADD WELL TABLE -->
-          <br>
           <mat-card class="add-remove-table">
             <mat-card-content>
               <selection-table
               [col]="selectPassedCol"
               [data]="tableData"
+              (testOutput)="updateWellList($event)"
               ></selection-table>
             </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <overview-table [col]="stepTwoCol" [data]="wellTable"></overview-table>
           </mat-card>
         </div>
       </form>
@@ -48,23 +52,30 @@
     <!-- Step 3 -->
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Overview</ng-template>
+        <ng-template matStepLabel>Review Project</ng-template>
         <div>
           <mat-card>Project Name: {{ firstFormGroup.value.projectName }} </mat-card>
         </div>
-        <expanding-table
-        [data]="tableData"
-        [col]="passedCol"></expanding-table>
+        <mat-card>
+          <expanding-table
+          [data]="wellTable"
+          [col]="stepThreeCol"></expanding-table>
+        </mat-card>
       </form>
       <br>
       <button mat-button matStepperPrevious>Previous</button>
-      <button mat-button>Save Draft</button>
+      <button mat-button (click)="saveDraftBtn()">Save Draft</button>
       <button mat-button matStepperNext>Next Step</button>
     </mat-step>
 
     <!-- Step 4 -->
     <mat-step>
       <ng-template matStepLabel>Confirmation</ng-template>
+      <div>
+        Please make sure that everything in the project is correct.
+        <br>
+        Once the project is submitted you will not be able to change this data.
+      </div>
       <br>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button>Submit</button>
