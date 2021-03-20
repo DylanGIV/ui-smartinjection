@@ -1,3 +1,4 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, NgForm, FormControl} from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
@@ -34,7 +35,9 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
     "wellName"
   ];
   
-  constructor(private _formBuilder: FormBuilder, private defaultService: DefaultService) {}
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private defaultService: DefaultService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -52,6 +55,8 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
     this.wellTable = value;
   }
 
+  // *********** BINDED ***************
+
   updateWellList(wellList: any[]) {
     console.log("in parent component: ", wellList);
 
@@ -60,13 +65,10 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
     console.log(this.wellTable);
   }
 
-  
-
-  // **** UNBINDED ****
   saveDraftBtn(): void {
     let formData = new FormData;
     let updateArray: string[] = [];
-    let externalIDArray: string[] = [];    
+    let externalIDArray: string[] = []; 
     
     for(let i=0; i < this.wellTable.length; i++) { 
       externalIDArray.push(this.wellTable[i].state.data.linearId.externalId);
@@ -75,20 +77,13 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
 
     console.log("externalID: ", externalIDArray);
     console.log("updateArray: ", updateArray);
-
-    // for (let i=0; i < this.wellTable.length; i++){
-    //   formData.append('projectName', this.firstFormGroup.controls['projectName'].value);
-    //   formData.append('externalIds', externalIDArray[i]);
-    //   formData.append('updates', updateArray[i]);
-      
-    //   this.defaultService.addRemoveWell(formData).subscribe(value => {
-    //     this.result = value;
-    //   })
-    // }
     
     formData.append('projectName', this.firstFormGroup.controls['projectName'].value);
-    formData.append('externalIds', externalIDArray[0]);
-    formData.append('updates', updateArray[0]);
+    formData.append('externalIds', externalIDArray.toString());
+    formData.append('updates', updateArray.toString());
+
+    console.log("externalId String: ", externalIDArray.toString());
+    console.log("updates String: ", updateArray.toString());
 
     console.log('externalIds', externalIDArray[0]);
     
@@ -97,9 +92,17 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
     })
   }
 
-  
+  submitBttn(): void {
+    console.log("submit dat project!");
 
-  // *********** BINDED ***************
+    let formData = new FormData;
+    formData.append('externalId', this.firstFormGroup.controls['projectName'].value);
+
+    this.defaultService.submitToCalGem(formData).subscribe(value => {
+      this.result = value;
+    })
+  }
+
   createNewProject(): void {
 
     console.log(this.firstFormGroup.controls['projectName'].value);

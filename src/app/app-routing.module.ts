@@ -28,7 +28,8 @@ const routes: Routes = [
       { path: 'my-wells', component: WoMyWellsComponent },
       { path: 'new-project', component: WoNewProjectComponent },
       { path: 'pending-project', component: WoPendingProjectComponent },
-      { path: 'unapproved-project', component: WoUnapprovedProjectComponent }
+      { path: 'unapproved-project', component: WoUnapprovedProjectComponent },
+      { path: 'unapproved-project/:projectId', component: WoUnapprovedProjectComponent }
     ]
   }
 ];

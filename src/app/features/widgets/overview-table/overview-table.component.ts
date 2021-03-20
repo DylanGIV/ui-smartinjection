@@ -12,10 +12,22 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 <!-- ******** **** UIC PROJECT TABLE ***** ********** -->
-<!-- Project Name Column -->
+<!-- Project Name Column DASH -->
+<ng-container matColumnDef="projectNameDASH">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+  <td mat-cell *matCellDef="let element"> 
+    <a [routerLink]="['/wo/unapproved-project', element.state.data.linearId.id]">
+      {{ element.state.data.projectName }} 
+    </a>
+  </td>
+</ng-container>
+
+<!-- Project Name Column  -->
 <ng-container matColumnDef="projectName">
   <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
-  <td mat-cell *matCellDef="let element"> {{element.state.data.projectName}} </td>
+  <td mat-cell *matCellDef="let element"> 
+      {{ element.state.data.projectName }} 
+  </td>
 </ng-container>
 
 <!-- Status Column -->
@@ -62,6 +74,7 @@ import { MatTableDataSource } from '@angular/material/table';
   <td mat-cell *matCellDef="let element"> {{ element.state.data.location }} </td>
 </ng-container>
 
+
 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
@@ -101,6 +114,7 @@ export class OverviewTableComponent implements OnInit, OnChanges, AfterViewInit 
   ngOnChanges(): void {
 
     this.dataSource.data = this.data;
+    console.log(this.data);
 
     this.dataSource.sort = this.sort;
 

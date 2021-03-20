@@ -10,17 +10,21 @@
           <mat-card>
             <mat-card-header>
               <mat-card-title>
-                Project Name {{ firstFormGroup.value.projectName }} 
+                {{ this.projectData.state.data.projectName }} 
               </mat-card-title>
               <mat-card-subtitle>
-                Project Hash 0000000000000
+                ID 
+                <em>
+                  {{ projectId }}
+                </em>
               </mat-card-subtitle>
             </mat-card-header>
           </mat-card>
           <mat-divider></mat-divider>
           <br>
           <mat-card>
-            <info-list></info-list>
+            <h2>Wells in Project</h2>
+            <overview-table [data]="wellData" [col]="wellCol"></overview-table>
           </mat-card>
         </div>
       </form>
@@ -29,22 +33,25 @@
     </mat-step>
 
     <!-- Step #2: Edit wells in the project-->
-    <mat-step [stepControl]="secondFormGroup">
+    <!-- <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel> Edit wells in the project</ng-template>
         <div>
           <mat-card>
             <mat-card-header>
               <mat-card-title>
-                Project Name {{ firstFormGroup.value.projectName }} 
+                {{ this.projectData.state.data.projectName }} 
               </mat-card-title>
               <mat-card-subtitle>
-                Project Hash 0000000000000
+                ID 
+                <em>
+                  {{ projectId }}
+                </em>
               </mat-card-subtitle>
             </mat-card-header>
           </mat-card>
           <br>
-          <mat-card><selection-table></selection-table></mat-card>
+          <mat-card><selection-table [col]="wellCol"></selection-table></mat-card>
           <br>
           <mat-card>
             <p>Select wells to remove</p>
@@ -55,7 +62,7 @@
       <br>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next Step</button>
-    </mat-step>
+    </mat-step> -->
     
     <!-- Step #3: Review changes-->
     <mat-step>
@@ -74,7 +81,7 @@
           </mat-card>
           <br>
           <mat-card>
-            <overview-table [data]="sampleData" [col]="columnsToDisplay"></overview-table>
+            <overview-table [data]="sampleData" [col]="wellCol"></overview-table>
           </mat-card>
         </div>
       </form>
