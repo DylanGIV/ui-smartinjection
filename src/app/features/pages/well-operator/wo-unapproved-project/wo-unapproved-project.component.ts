@@ -78,7 +78,7 @@ export class WoUnapprovedProjectComponent implements OnInit, OnChanges {
       let projectInfo: any = value;
 
       console.log("value: ", value);
-      // console.log("someon", value[key as keyof Object].state.data);
+     
       console.log(Object.keys(value).length);
       // Object.keys() changes the object to an array
       // * avoids an error from angular
@@ -93,7 +93,7 @@ export class WoUnapprovedProjectComponent implements OnInit, OnChanges {
           this.projectData = projectInfo[i];
           console.log("projectData:", this.projectData);
           // console.log("projectData: ", this.projectData.state.data.wellIds);
-          this.loadWellList();
+          this.loadWellList(); //calls function to make a well list from the wellIds in the project
           break;
         }
       }

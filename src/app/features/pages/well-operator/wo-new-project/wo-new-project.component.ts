@@ -120,7 +120,16 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
 
   getWells(): void {
     this.defaultService.getWells().subscribe(value =>{
-      this.tableData = value;
+      let wellsNoProject: any = value;
+      let newWells: any[] = [];
+
+      // filters out all the wells with projects already
+      for(let i = 0; i < wellsNoProject.length; i++){
+        if (wellsNoProject[i].state.data.projectName == "N/A"){
+          newWells.push(wellsNoProject[i]);
+        }
+      }
+      this.tableData = newWells;
     });
   }
 

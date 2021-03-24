@@ -39,6 +39,7 @@
             </mat-card-content>
           </mat-card>
 
+          <!-- OVERVIEW TABLE // Updates with selected wells -->
           <mat-card>
             <overview-table [col]="stepTwoCol" [data]="wellTable"></overview-table>
           </mat-card>
@@ -65,7 +66,7 @@
       <br>
       <button mat-button matStepperPrevious>Previous</button>
       <button mat-button (click)="saveDraftBtn()">Save Draft</button>
-      <button mat-button matStepperNext>Next Step</button>
+      <button mat-button (click)="saveDraftBtn()" matStepperNext>Next Step</button>
     </mat-step>
 
     <!-- Step 4 -->
