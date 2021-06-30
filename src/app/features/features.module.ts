@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OverviewListComponent } from './widgets/overview-list/overview-list.component';
 import { InfoListComponent } from './widgets/info-list/info-list.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { RegApproveFormComponent } from './pages/regulator/reg-approve-form/reg-approve-form.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     OverviewTableComponent,
     FeaturesComponent,
     OverviewListComponent,
-    InfoListComponent
+    InfoListComponent,
+    RegApproveFormComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 <div>
   <button mat-button routerLink="/wo/dashboard" routerLinkActive="active">Back to the Dashboard</button>
+  <!-- <button mat-button (click)="dashButton()">Test Dash</button> -->
   <mat-horizontal-stepper>
     <!-- Step 1 -->
     <!-- Bugs: Currently <mat-form-field> is not function properly-->
@@ -60,12 +61,13 @@
         <mat-card>
           <expanding-table
           [data]="wellTable"
-          [col]="stepThreeCol"></expanding-table>
+          [col]="stepThreeCol"
+          [wellTable]="true"></expanding-table>
         </mat-card>
       </form>
       <br>
       <button mat-button matStepperPrevious>Previous</button>
-      <button mat-button (click)="saveDraftBtn()">Save Draft</button>
+      <button mat-button (click)="saveDraftBtn()" (click)="draft()">Save Draft</button>
       <button mat-button (click)="saveDraftBtn()" matStepperNext>Next Step</button>
     </mat-step>
 

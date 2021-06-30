@@ -50,6 +50,7 @@ export class WoUnapprovedProjectComponent implements OnInit, OnChanges {
       secondCtrl: ['', Validators.required]
     });
     
+    // ** grabbing parameters from URL and setting them to a variable
     const routeParams = this.route.snapshot.paramMap;
     const projectIdFromRoute = routeParams.get('projectId');
 
@@ -70,6 +71,9 @@ export class WoUnapprovedProjectComponent implements OnInit, OnChanges {
 
   // ** This function will find the project info from the
   // ** param in the url
+
+  // ** Will Set projectData to the projectData needed to populate
+  // ** the info in mat-card
   searchProjectInfo(projectIdFromURL: any): void {
     console.log(projectIdFromURL);
     this.projectId = projectIdFromURL; 
@@ -80,10 +84,10 @@ export class WoUnapprovedProjectComponent implements OnInit, OnChanges {
       console.log("value: ", value);
      
       console.log(Object.keys(value).length);
+
       // Object.keys() changes the object to an array
       // * avoids an error from angular
       let len = Object.keys(value).length; 
-      // console.log("projectInfo: ", projectInfo[0]);
 
       for (let i=0; i < len; i++) {
         console.log(projectInfo[i].state.data.linearId.id);

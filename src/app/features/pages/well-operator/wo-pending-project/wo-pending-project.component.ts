@@ -9,7 +9,7 @@ import { DefaultService } from 'src/app/core/services/default.service';
 export class WoPendingProjectComponent implements OnInit {
 
   projectCol: any[] = [
-    "projectNameDASH",
+    "projectNameDASH-WO",
     "status",
     "UICProjectNumber"
   ];

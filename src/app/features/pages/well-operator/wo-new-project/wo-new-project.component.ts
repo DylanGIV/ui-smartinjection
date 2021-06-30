@@ -1,6 +1,7 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, NgForm, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 import { fromEventPattern } from 'rxjs';
 import { DefaultService } from 'src/app/core/services/default.service';
 
@@ -16,6 +17,7 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
   result: any;
+  draftB: boolean = false;
 
   tableData!: any;
   projectWellData!: any;
@@ -37,7 +39,8 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
   
   constructor(
     private _formBuilder: FormBuilder, 
-    private defaultService: DefaultService) {}
+    private defaultService: DefaultService,
+    private router: Router) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -52,7 +55,10 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(value: any) {
-    this.wellTable = value;
+    // sets the wellTable to the value passed in which is 
+    // the array that's passed in by the selection table component
+    // in ngOnChanges so that the component updates right away when you select
+    this.wellTable = value; 
   }
 
   // *********** BINDED ***************
@@ -89,7 +95,16 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
     
     this.defaultService.addRemoveWell(formData).subscribe(value => {
       this.result = value;
-    })
+    });
+    
+    if (this.draftB){
+      this.router.navigate(['wo/dashboard']);
+    }
+
+  }
+
+  draft(): void {
+    this.draftB = true;
   }
 
   submitBttn(): void {
@@ -100,7 +115,9 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
 
     this.defaultService.submitToCalGem(formData).subscribe(value => {
       this.result = value;
-    })
+    });
+
+    this.router.navigate(['wo/dashboard']);
   }
 
   createNewProject(): void {
@@ -131,6 +148,10 @@ export class WoNewProjectComponent implements OnInit, OnChanges {
       }
       this.tableData = newWells;
     });
+  }
+
+  dashButton(): void {
+    this.router.navigate(['wo/dashboard']);
   }
 
 }

@@ -11,7 +11,7 @@ export class WoDashboardComponent implements OnInit {
 
   tableData!: any;
   passedCol = [
-    'projectNameDASH',
+    'projectNameDASH-WO',
     'status',
     'UICProjectNumber'
   ];
@@ -35,7 +35,7 @@ export class WoDashboardComponent implements OnInit {
         }
       }
       
-      this.tableData = unapproved;
+      this.tableData = value;
       // console.log("value in dash: ", value);
       // this.tableData = value; 
       

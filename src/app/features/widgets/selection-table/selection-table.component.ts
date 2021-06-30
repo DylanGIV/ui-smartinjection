@@ -149,7 +149,8 @@ export class SelectionTableComponent implements OnInit, OnChanges {
     }
     console.log(this.wellIDs);
 
-    this.testOutput.emit(this.wellIDs);
+    //sends well information in wellIDs to another component calling it
+    this.testOutput.emit(this.wellIDs); 
 
     this.wellIDs = [];
     

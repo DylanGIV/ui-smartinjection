@@ -12,11 +12,21 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 <!-- ******** **** UIC PROJECT TABLE ***** ********** -->
-<!-- Project Name Column DASH -->
-<ng-container matColumnDef="projectNameDASH">
+<!-- Project Name Column DASH WO-->
+<ng-container matColumnDef="projectNameDASH-WO">
   <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
   <td mat-cell *matCellDef="let element"> 
     <a [routerLink]="['/wo/unapproved-project', element.state.data.linearId.id]">
+      {{ element.state.data.projectName }} 
+    </a>
+  </td>
+</ng-container>
+
+<!-- Project Name Column DASH REG-->
+<ng-container matColumnDef="projectNameDASH-REG">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+  <td mat-cell *matCellDef="let element"> 
+    <a [routerLink]="['/reg/project-review', element.state.data.linearId.id]">
       {{ element.state.data.projectName }} 
     </a>
   </td>
@@ -42,8 +52,8 @@ import { MatTableDataSource } from '@angular/material/table';
   <td mat-cell *matCellDef="let element"> {{element.state.data.UICProjectNumber}} </td>
 </ng-container>
 
-<!-- ************* WELL TABLE *************** -->
 
+<!-- ************* WELL TABLE *************** -->
 <!-- WELL NAME -->
 <ng-container matColumnDef="wellName">
   <th mat-header-cell *matHeaderCellDef> Well Name </th>
@@ -72,6 +82,12 @@ import { MatTableDataSource } from '@angular/material/table';
 <ng-container matColumnDef="location">
   <th mat-header-cell *matHeaderCellDef> Location </th>
   <td mat-cell *matCellDef="let element"> {{ element.state.data.location }} </td>
+</ng-container>
+
+<!-- Project Name -->
+<ng-container matColumnDef="projectNameWell">
+  <th mat-header-cell *matHeaderCellDef> Project Name </th>
+  <td mat-cell *matCellDef="let element"> {{ element.state.data.projectName }} </td>
 </ng-container>
 
 
