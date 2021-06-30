@@ -1,9 +1,10 @@
-<div>
+<!-- <h1>Unapproved Project</h1> -->
+<!-- <div>
   <a mat-button href="wo/dashboard">Back to the Dashboard</a>
-  <mat-horizontal-stepper>
+  <mat-horizontal-stepper> -->
 
     <!-- Step #1: Overview of the project-->
-    <mat-step [stepControl]="firstFormGroup">
+    <!-- <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Overview of the project</ng-template>
         <div>
@@ -17,6 +18,22 @@
                 <em>
                   {{ projectId }}
                 </em>
+                <div>
+                  <strong>
+                    UIC Project Number 
+                  </strong>
+                  <em>
+                    {{ this.projectData.state.data.UICProjectNumber }}
+                  </em>
+                </div>
+                <div>
+                  <strong>
+                    Status
+                  </strong>
+                  <em>
+                    {{ this.projectData.state.data.status }}
+                  </em>
+                </div>
               </mat-card-subtitle>
             </mat-card-header>
           </mat-card>
@@ -30,7 +47,7 @@
       </form>
       <br>
       <button mat-button matStepperNext>Next Step</button>
-    </mat-step>
+    </mat-step> -->
 
     <!-- Step #2: Edit wells in the project-->
     <!-- <mat-step [stepControl]="secondFormGroup">
@@ -65,7 +82,7 @@
     </mat-step> -->
     
     <!-- Step #3: Review changes-->
-    <mat-step>
+    <!-- <mat-step>
       <form>
         <ng-template matStepLabel>Review changes</ng-template>
         <div>
@@ -89,13 +106,55 @@
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button>Save Draft</button>
       <button mat-button matStepperNext>Next Step</button>
-    </mat-step>
+    </mat-step> -->
+
     <!-- Step #4: Confirmation-->
-      <mat-step>
+      <!-- <mat-step>
         <ng-template matStepLabel>Confirmation</ng-template>
         <br>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button>Submit</button>
-      </mat-step>
-  </mat-horizontal-stepper>
+      </mat-step> -->
+  <!-- </mat-horizontal-stepper>
+</div> -->
+
+<a mat-button href="wo/dashboard">Back to the Dashboard</a>
+<div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ this.projectData.state.data.projectName }} 
+      </mat-card-title>
+      <mat-card-subtitle>
+        <strong>
+          ID 
+        </strong>
+        <em>
+          {{ projectId }}
+        </em>
+        <div>
+          <strong>
+            UIC Project Number 
+          </strong>
+          <em>
+            {{ this.projectData.state.data.UICProjectNumber }}
+          </em>
+        </div>
+        <div>
+          <strong>
+            Status
+          </strong>
+          <em>
+            {{ this.projectData.state.data.status }}
+          </em>
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <br>
+  <mat-card>
+    <h2>Wells in Project</h2>
+    <expanding-table [data]="wellData" [col]="wellCol" [wellTable]="true"></expanding-table>
+  </mat-card>
 </div>

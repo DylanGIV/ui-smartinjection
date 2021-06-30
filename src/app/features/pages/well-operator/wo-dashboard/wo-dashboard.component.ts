@@ -11,7 +11,7 @@ export class WoDashboardComponent implements OnInit {
 
   tableData!: any;
   passedCol = [
-    'projectNameDASH',
+    'projectNameDASH-WO',
     'status',
     'UICProjectNumber'
   ];
@@ -26,11 +26,21 @@ export class WoDashboardComponent implements OnInit {
   initializeProjects(): void {
     this.defaultService.getProjects().subscribe(value => {
       // sets the data from the backend to the table data in the front end
-      console.log("value in dash: ", value);
-      this.tableData = value; 
+      let unapprovedProjects: any = value;
+      let unapproved: any = [];
+
+      for(let i = 0; i < unapprovedProjects.length; i++) {
+        if(unapprovedProjects[i].state.data.status == "Unapproved"){
+          unapproved.push(unapprovedProjects[i]);
+        }
+      }
       
-      console.log("table data");
-      console.log(this.tableData);
+      this.tableData = value;
+      // console.log("value in dash: ", value);
+      // this.tableData = value; 
+      
+      // console.log("table data");
+      // console.log(this.tableData);
     }) 
   }
 

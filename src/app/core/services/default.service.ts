@@ -17,6 +17,9 @@ export class DefaultService {
   private addRemoveWellURL = 'http://localhost:10050/addRemoveWellFlow';
   private createWellURL = 'http://localhost:10050/create';
   private submissionURL = 'http://localhost:10050/submission';
+  
+  private denyURL = 'http://localhost:10051/deny'; 
+  private approveURL = 'http://localhost:10051/approve'; 
 
   constructor(private http: HttpClient) { }
 
@@ -53,5 +56,17 @@ export class DefaultService {
     console.log("In submitToCalGem");
 
     return this.http.post(this.submissionURL, formData, {headers: this.headers, responseType: 'text'});
+  }
+
+  deny(formData: FormData) {
+    console.log("In deny service");
+
+    return this.http.post(this.denyURL, formData, {headers: this.headers, responseType: 'text'});
+  }
+
+  approve(formData: FormData) {
+    console.log("In approve service");
+
+    return this.http.post(this.approveURL, formData, {headers: this.headers, responseType: 'text'});
   }
 }

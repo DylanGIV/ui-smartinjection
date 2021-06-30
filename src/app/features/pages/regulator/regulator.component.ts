@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegulatorComponent implements OnInit {
 
+  sideBarOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
 
 }

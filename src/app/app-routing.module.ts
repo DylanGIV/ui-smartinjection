@@ -15,9 +15,11 @@ import { WoUnapprovedProjectComponent } from './features/pages/well-operator/wo-
 const routes: Routes = [
   { path: 'reg', component: RegulatorComponent,
     children: [
+      { path: '', component: RegDashboardComponent },
       { path: 'dashboard', component: RegDashboardComponent },
-      { path: 'uic-pending-projects', component: RegUicPendingProjectsComponent },
-      { path: 'uic-project-review', component: RegUicProjectReviewComponent }
+      { path: 'project-review', component: RegUicProjectReviewComponent },
+      { path: 'approved-project', component: RegUicPendingProjectsComponent },
+      { path: 'project-review/:projectId', component: RegUicProjectReviewComponent }
     ]
   },
   { path: 'wo', component: WellOperatorComponent,

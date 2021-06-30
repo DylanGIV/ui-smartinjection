@@ -13,7 +13,8 @@ export class WoMyWellsComponent implements OnInit {
     "wellName",
     "lease",
     "locationType",
-    "location"
+    "location",
+    "projectNameWell"
   ];
 
   constructor(private defaultService:DefaultService) { }
