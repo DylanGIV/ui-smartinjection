@@ -11,4 +11,4 @@ Go into project directory and run 'npm install'
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --host 0.0.0.0 --port 80` for a dev server. Navigate to `http://smartinjection.eastus.cloudapp.azure.com/`. The app will automatically reload if you change any of the source files.
